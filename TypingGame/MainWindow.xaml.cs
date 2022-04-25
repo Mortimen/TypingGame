@@ -28,6 +28,7 @@ namespace TypingGame
             game.Run();
         }
         
+
         private void keyDownEventHandler(object senser, KeyEventArgs e)
         {
             if (e.Key == Key.Space)
@@ -35,9 +36,14 @@ namespace TypingGame
                 for (int i = 0; i < game.NumberOfWords(); i++)
                 {
                     if (input.Text == game.GetWord(i))
-                        text1.Text = " ";
+                        Canvas.Children.Remove(game.textBlocks[0]);
                 }
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            game.Run();
         }
     }
 }
