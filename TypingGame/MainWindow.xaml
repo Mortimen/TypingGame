@@ -12,11 +12,17 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
-        <Canvas Grid.Row="0"/>
-        
-        <TextBox Grid.Row="1" 
+
+        <Canvas Grid.Row="0">
+            <TextBlock Name="text1"
+                       FontSize="50"
+                       Text="Jebac disa"/>
+        </Canvas>
+
+        <TextBox Name="input"
+                 Grid.Row="1" 
                  Margin="300 10 300 100"
-                 FontSize="18"/>
+                 FontSize="18"
+                 PreviewKeyDown="keyDownEventHandler"/>
     </Grid>
 </Window>

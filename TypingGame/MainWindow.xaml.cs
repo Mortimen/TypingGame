@@ -20,9 +20,24 @@ namespace TypingGame
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Game game = new Game();
+
         public MainWindow()
         {
             InitializeComponent();
+            game.Run();
+        }
+        
+        private void keyDownEventHandler(object senser, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                for (int i = 0; i < game.NumberOfWords(); i++)
+                {
+                    if (input.Text == game.GetWord(i))
+                        text1.Text = " ";
+                }
+            }
         }
     }
 }
