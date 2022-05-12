@@ -26,6 +26,7 @@ namespace TypingGame
         {
             InitializeComponent();
             game.Run();
+            game.ChangePositions();
         }
         
 
@@ -33,17 +34,29 @@ namespace TypingGame
         {
             if (e.Key == Key.Space)
             {
-                for (int i = 0; i < game.NumberOfWords(); i++)
+                //for (int i = 0; i < game.NumberOfWords(); i++)
+                //{
+                //    if (input.Text == game.GetWord(i))
+                //        Canvas.Children.Remove(game.textBlocks[0]);
+                //}
+
+                foreach (KeyValuePair<TextBlock, string> kvp in game.wordsOnScreen)
                 {
-                    if (input.Text == game.GetWord(i))
-                        Canvas.Children.Remove(game.textBlocks[0]);
+                    if (input.Text == kvp.Value)
+                    {
+                        Canvas.Children.Remove(kvp.Key);
+                        game.wordsOnScreen.Remove(kvp.Key);
+                        game.ScoreUp();
+                    }
                 }
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void keyUpEventHandler(object senser, KeyEventArgs e)
         {
-            game.Run();
+            if (e.Key == Key.Space)
+                input.Text = String.Empty;
         }
+
     }
 }

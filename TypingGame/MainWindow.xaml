@@ -13,17 +13,26 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Canvas Grid.Row="0" x:Name="Canvas">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
 
-        </Canvas>
+        </Grid.ColumnDefinitions>
+        <Canvas Grid.Row="0" 
+                x:Name="Canvas"
+                Height="650"
+                Grid.ColumnSpan="3"/>
+
+
 
         <TextBox Name="input"
                  Grid.Row="1" 
                  Margin="300 10 300 100"
                  FontSize="18"
-                 PreviewKeyDown="keyDownEventHandler"/>
+                 Grid.ColumnSpan="3"
+                 PreviewKeyDown="keyDownEventHandler"
+                 PreviewKeyUp="keyUpEventHandler"/>
 
-        <Button Grid.Row="1" Width="50" Height="20" Click="Button_Click"/>
-        
     </Grid>
 </Window>
